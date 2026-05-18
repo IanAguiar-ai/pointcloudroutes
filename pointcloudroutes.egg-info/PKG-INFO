@@ -1,3 +1,29 @@
+Metadata-Version: 2.4
+Name: pointcloudroutes
+Version: 0.1.0
+Author: ['Ian Aguiar']
+Author-email: <iannaianjos@gmail.com>
+Keywords: python
+Classifier: Development Status :: 1 - Planning
+Classifier: Intended Audience :: Developers
+Classifier: Programming Language :: Python :: 3
+Classifier: Operating System :: Unix
+Classifier: Operating System :: MacOS :: MacOS X
+Classifier: Operating System :: Microsoft :: Windows
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: pandas
+Requires-Dist: numpy
+Dynamic: author
+Dynamic: author-email
+Dynamic: classifier
+Dynamic: description
+Dynamic: description-content-type
+Dynamic: keywords
+Dynamic: license-file
+Dynamic: requires-dist
+
+
 # Point-Cloud Routes
 
 **Point-Cloud Routes** is a Python library designed to reconstruct and discover sequential routes from unorganized spatial point clouds. 
@@ -10,7 +36,7 @@ The algorithm utilizes an iterative approach based on **local density**, **inver
 
 ### Local Installation 
 ```bash
-pip install https://github.com/IanAguiar-ai/pointcloudroutes
+pip install link
 ```
 
 ---

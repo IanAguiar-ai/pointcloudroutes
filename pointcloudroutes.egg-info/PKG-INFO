@@ -36,7 +36,7 @@ The algorithm utilizes an iterative approach based on **local density**, **inver
 
 ### Local Installation 
 ```bash
-pip install link
+pip install https://github.com/IanAguiar-ai/pointcloudroutes
 ```
 
 ---

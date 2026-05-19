@@ -2,7 +2,7 @@ import pandas as pd
 import numpy as np
 
 def discover_route(df:pd.DataFrame, initial_point:list[float, float], meters:int = 5, lon_col:str = "lon", lat_col:str = "lat",
-                   angular_samples:int = 64, iterations:int = 300, increase_meters:float = 1.5,
+                   angular_samples:int = 360, iterations:int = 1000, increase_meters:float = 1.5,
                    decrease_meters:float = 0.67, max_meters:float = 100, to_maintain:list = [],
                    verbose:bool = False) -> pd.DataFrame:
     """
@@ -69,6 +69,7 @@ def discover_route(df:pd.DataFrame, initial_point:list[float, float], meters:int
 
     # Initialize lists to gather route results efficiently
     route_lons, route_lats = [], []
+    dist_meters = []
     route_maintain = {col: [] for col in to_maintain} if to_maintain else {}
     points_captured = []
 
@@ -164,6 +165,7 @@ def discover_route(df:pd.DataFrame, initial_point:list[float, float], meters:int
             # Append winning coordinates to route arrays
             route_lons.append(best_point[0])
             route_lats.append(best_point[1])
+            dist_meters.append(meters_rad)
 
             # Deactivate captured points to prevent reprocessing them in subsequent steps
             active_mask[best_captured_idx] = False
@@ -183,7 +185,7 @@ def discover_route(df:pd.DataFrame, initial_point:list[float, float], meters:int
             meters_rad = max(meters_min_rad, meters_rad * decrease_meters)
 
     # Format collected tracking data back into a standard output DataFrame
-    route_data = {lon_col: route_lons, lat_col: route_lats}
+    route_data = {lon_col:route_lons, lat_col:route_lats, "_meters_":dist_meters}
     if to_maintain:
         route_data.update(route_maintain)
     route_df = pd.DataFrame(route_data)

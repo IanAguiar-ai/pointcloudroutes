@@ -165,7 +165,7 @@ def discover_route(df:pd.DataFrame, initial_point:list[float, float], meters:int
             # Append winning coordinates to route arrays
             route_lons.append(best_point[0])
             route_lats.append(best_point[1])
-            dist_meters.append(meters_rad)
+            dist_meters.append(meters_rad * 111_132)
 
             # Deactivate captured points to prevent reprocessing them in subsequent steps
             active_mask[best_captured_idx] = False

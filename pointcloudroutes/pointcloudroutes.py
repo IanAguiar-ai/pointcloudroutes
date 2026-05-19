@@ -3,7 +3,7 @@ import numpy as np
 
 def discover_route(df:pd.DataFrame, initial_point:list[float, float], meters:int = 5, lon_col:str = "lon", lat_col:str = "lat",
                    angular_samples:int = 360, iterations:int = 1000, increase_meters:float = 1.5,
-                   decrease_meters:float = 0.67, max_meters:float = 100, to_maintain:list = [],
+                   decrease_meters:float = 2/3, max_meters:float = 100, to_maintain:list = [],
                    verbose:bool = False) -> pd.DataFrame:
     """
     Discovers a sequential route through a spatial point cloud based on point density,

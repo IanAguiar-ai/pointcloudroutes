@@ -148,7 +148,7 @@ def discover_route(df:pd.DataFrame, initial_point:list[float, float], meters:int
                 continue
 
             # Inverse-distance density scoring formula
-            scores = (1.0 / dist1[combined_mask]) * (1.0 / dist2[combined_mask])
+            scores = 1.0/dist2[combined_mask] #(1.0 / dist1[combined_mask]) * (1.0 / dist2[combined_mask])
             total_score = np.sum(scores)
 
             # Keep track of the highest scoring candidate point

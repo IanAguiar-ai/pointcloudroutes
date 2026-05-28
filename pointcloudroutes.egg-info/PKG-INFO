@@ -79,7 +79,7 @@ At each step, the algorithm executes the following sequence:
 1. **Candidate Generation:** Generates a circular ring of `angular_samples` (default: 64) candidate points around the current position based on the current search radius (`meters`).
 2. **Angular Filtering:** Once a heading is established (at least 2 route points), it computes the dot product between the route heading vector and the dataset point delta vectors. Only points with a cosine similarity greater than zero (curves under 90 degrees) are evaluated.
 3. **Density Scoring:** Scores each candidate point using an inverse-distance formula against active dataset clusters:
-   $$\text{Score} = \sum \left( \frac{1}{\text{current distance}} \times \frac{1}{\text{candidate distance}} \right)$$
+   $$\text{Score} = \sum \frac{1}{\text{candidate distance}}$$
 4. **Adaptive Step Adjustments:** The highest-scoring candidate becomes the next route node. If no dense point clusters are found, the search radius scales up by `increase_meters`. Upon success, it shrinks by `decrease_meters` to keep the path tight.
 
 ---
